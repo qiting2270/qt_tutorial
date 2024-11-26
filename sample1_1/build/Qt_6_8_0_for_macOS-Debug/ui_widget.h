@@ -25,10 +25,14 @@ public:
     {
         if (Widget->objectName().isEmpty())
             Widget->setObjectName("Widget");
-        Widget->resize(800, 600);
+        Widget->resize(525, 289);
         label = new QLabel(Widget);
         label->setObjectName("label");
-        label->setGeometry(QRect(270, 156, 81, 20));
+        label->setGeometry(QRect(30, 20, 161, 61));
+        QFont font;
+        font.setFamilies({QString::fromUtf8("Arial")});
+        font.setPointSize(24);
+        label->setFont(font);
 
         retranslateUi(Widget);
 
@@ -38,7 +42,7 @@ public:
     void retranslateUi(QWidget *Widget)
     {
         Widget->setWindowTitle(QCoreApplication::translate("Widget", "Widget", nullptr));
-        label->setText(QCoreApplication::translate("Widget", "Hello world", nullptr));
+        label->setText(QCoreApplication::translate("Widget", "Hello world !", nullptr));
     } // retranslateUi
 
 };

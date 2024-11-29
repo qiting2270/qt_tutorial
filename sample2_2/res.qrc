@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>images/tick.svg</file>
+        <file>images/微信.png</file>
+        <file>images/delete.svg</file>
+    </qresource>
+</RCC>

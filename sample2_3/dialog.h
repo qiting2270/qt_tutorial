@@ -27,7 +27,12 @@ private:
     QPushButton *btnCancel;
     QPushButton *btnClose;
 
+private slots:
+    void do_checkBoxUnder(bool checked);
+    void do_checkBoxBold(bool checked);
+    void do_checkBoxItalic(bool checked);
 
+    void do_setFontColor();
 
 public:
     Dialog(QWidget *parent = nullptr);

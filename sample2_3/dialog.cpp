@@ -8,6 +8,42 @@
 #include <QPushButton>
 
 
+void Dialog::do_checkBoxUnder(bool checked)
+{
+    QFont font = txtEdit->font();
+    font.setUnderline(checked);
+    txtEdit->setFont(font);
+}
+
+void Dialog::do_checkBoxBold(bool checked)
+{
+    QFont font = txtEdit->font();
+    font.setBold(checked);
+    txtEdit->setFont(font);
+}
+
+void Dialog::do_checkBoxItalic(bool checked)
+{
+    QFont font = txtEdit->font();
+    font.setItalic(checked);
+    txtEdit->setFont(font);
+}
+
+void Dialog::do_setFontColor()
+{
+    QPalette plet = txtEdit->palette();
+    if(radioBlack->isChecked()){
+        plet.setColor(QPalette::Text, Qt::black);
+    }
+    if(radioBlue->isChecked()){
+        plet.setColor(QPalette::Text, Qt::blue);
+    }
+    if(radioRed->isChecked()){
+        plet.setColor(QPalette::Text, Qt::red);
+    }
+    txtEdit->setPalette(plet);
+}
+
 Dialog::Dialog(QWidget *parent)
     : QDialog(parent)
 {
@@ -55,7 +91,19 @@ Dialog::Dialog(QWidget *parent)
 
     setLayout(VLayout);
 
+    connect(checkboxUnder, SIGNAL(clicked(bool)), this, SLOT(do_checkBoxUnder(bool)));
+    connect(checkboxBold, SIGNAL(clicked(bool)), this, SLOT(do_checkBoxBold(bool)));
+    connect(checkboxItalic, SIGNAL(clicked(bool)), this, SLOT(do_checkBoxItalic(bool)));
 
+    connect(radioBlack, SIGNAL(clicked(bool)), this, SLOT(do_setFontColor()));
+    connect(radioRed, SIGNAL(clicked(bool)), this, SLOT(do_setFontColor()));
+    connect(radioBlue, SIGNAL(clicked(bool)), this, SLOT(do_setFontColor()));
+
+    connect(btnOK, SIGNAL(clicked()), this, SLOT(accept()));
+    connect(btnCancel, SIGNAL(clicked()), this, SLOT(reject()));
+    connect(btnClose, SIGNAL(clicked()), this, SLOT(close()));
+
+    setWindowTitle("手工打造UI");
 }
 
 Dialog::~Dialog() {}
